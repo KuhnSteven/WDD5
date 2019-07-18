@@ -26,16 +26,30 @@ class Pg1 extends Component {
 
 
   render() {
-    return ( <section >
-      <p>{this.state.picofDay.copyright}</p>
-      <p>{this.state.picofDay.date}</p>
-      <p>{this.state.picofDay.explanation}</p>
-      <p>{this.state.picofDay.hdurl}</p>
-      <p>{this.state.picofDay.media_type}</p>
-      <p>{this.state.picofDay.title}</p>
-      <img src={this.state.picofDay.url} alt={this.state.picofDay.title} />
-      </section>
-    );
+    if (this.state.picofDay.media_type === "video") {
+      return (
+        <section>
+          <p>{this.state.picofDay.title}</p>
+          <p>Media File Type: {this.state.picofDay.media_type}</p>
+          <a href={this.state.picofDay.url}>{this.state.picofDay.title}</a>
+          <p>{this.state.picofDay.copyright}</p>
+          <p>date: {this.state.picofDay.date}</p>
+          <p>Video Text: {this.state.picofDay.explanation}</p>
+        </section>
+      )
+    } else {
+      return (
+        <section >
+          <p>{this.state.picofDay.title}</p>
+          <img src={this.state.picofDay.url} alt={this.state.picofDay.title} />
+          <p>{this.state.picofDay.copyright}</p>
+          <p>date: {this.state.picofDay.date}</p>
+          <p>Image Text: {this.state.picofDay.explanation}</p>
+          <p>HD URL: {this.state.picofDay.hdurl}</p>
+          <p>Media File Type: {this.state.picofDay.media_type}</p>
+        </section>
+      );
+    }
   }
 }
 
