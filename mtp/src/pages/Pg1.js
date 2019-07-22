@@ -10,9 +10,10 @@ class Pg1 extends Component {
 
 
   componentDidMount() {
-    //Photo of the day
+    // Astronomy Photo of the day
+    // the first APOD 1995-06-16
     const apiKey = `E6Ia87NnQyeFUYuqZqKTf9DzLO3WYlGcbmppB1uy`
-    const picofDayAPI = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+    const picofDayAPI = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=1995-11-04`;
     fetch(picofDayAPI)
       .then(res => res.json())
       .then(picofDay => {
@@ -26,30 +27,38 @@ class Pg1 extends Component {
 
 
   render() {
+    // Carousel Content Container & Media Type Logic
+
     if (this.state.picofDay.media_type === "video") {
       return (
         <section>
-          <p>{this.state.picofDay.title}</p>
-          <p>Media File Type: {this.state.picofDay.media_type}</p>
-          <a href={this.state.picofDay.url}>{this.state.picofDay.title}</a>
-          <p>{this.state.picofDay.copyright}</p>
           <p>date: {this.state.picofDay.date}</p>
-          <p>Video Text: {this.state.picofDay.explanation}</p>
+          <h1>{this.state.picofDay.title}</h1>
+          <h1>Credit & Copyright - {this.state.picofDay.copyright}</h1>
+
+          <a href={this.state.picofDay.hdurl}>
+            <img src={this.state.picofDay.url} alt={this.state.picofDay.title} />
+          </a>
+
+          <p>Video Description: {this.state.picofDay.explanation}</p>
         </section>
       )
     } else {
       return (
         <section >
-          <p>{this.state.picofDay.title}</p>
-          <img src={this.state.picofDay.url} alt={this.state.picofDay.title} />
-          <p>{this.state.picofDay.copyright}</p>
           <p>date: {this.state.picofDay.date}</p>
-          <p>Image Text: {this.state.picofDay.explanation}</p>
-          <p>HD URL: {this.state.picofDay.hdurl}</p>
-          <p>Media File Type: {this.state.picofDay.media_type}</p>
+          <h1>{this.state.picofDay.title}</h1>
+          <h1>Credit & Copyright - {this.state.picofDay.copyright}</h1>
+
+          <a href={this.state.picofDay.hdurl}>
+            <img src={this.state.picofDay.url} alt={this.state.picofDay.title} />
+          </a>
+
+          <p>Image Description: {this.state.picofDay.explanation}</p>
         </section>
       );
     }
+
   }
 }
 

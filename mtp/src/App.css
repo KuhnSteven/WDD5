@@ -1,3 +1,15 @@
+/* Color Palette
+    #56BCDD = Dark Purple
+    #301729 = Sea Surpent CHANGE
+    #C6654F = Copper Red
+    #C68F4F = Aztec Gold
+    #E8EDDF = Platinum
+ */
+
 .myHeader{
     background-color: lavender;
+}
+
+html{
+    background-color: black;
 }

@@ -9,18 +9,17 @@ class Pg3 extends Component {
   state = {
     // Temp
     atAV: [],
-    // atCT: [],
     atMN: [],
     atMX: [],
 
     // Wind
     hwsAV: [],
-    // hwsCT: [],
     hwsMN: [],
     hwsMX: [],
+    hwsWD: [],
+
     // Pressure
     preAV: [],
-    // preCT: [],
     preMN: [],
     preMX: [],
   }
@@ -30,44 +29,63 @@ class Pg3 extends Component {
     fetch( marsWeatherAPI )
       .then( res => res.json() )
       .then( spaceWeather => {
-        console.log( spaceWeather[ "216" ] );
+        // console.log( spaceWeather[ "223" ] );
         this.setState( {
-          atAV: spaceWeather["216"]["AT"]["av"],
-          atCT: spaceWeather["216"]["AT"]["ct"],
-          atMN: spaceWeather["216"]["AT"]["mn"],
-          atMX: spaceWeather["216"]["AT"]["mx"],
-          hwsAV: spaceWeather["216"]["HWS"]["av"],
-          hwsCT: spaceWeather["216"]["HWS"]["ct"],
-          hwsMN: spaceWeather["216"]["HWS"]["mn"],
-          hwsMX: spaceWeather["216"]["HWS"]["mx"],
-          preAV: spaceWeather["216"]["PRE"]["av"],
-          preCT: spaceWeather["216"]["PRE"]["ct"],
-          preMN: spaceWeather["216"]["PRE"]["mn"],
-          preMX: spaceWeather["216"]["PRE"]["mx"],
+          atAV: spaceWeather["223"]["AT"]["av"],
+          atMN: spaceWeather["223"]["AT"]["mn"],
+          atMX: spaceWeather["223"]["AT"]["mx"],
+          hwsAV: spaceWeather["223"]["HWS"]["av"],
+          hwsMN: spaceWeather["223"]["HWS"]["mn"],
+          hwsMX: spaceWeather["223"]["HWS"]["mx"],
+          hwsWD: spaceWeather["223"]["WD"]["most_common"]["compass_point"],
+          preAV: spaceWeather["223"]["PRE"]["av"],
+          preMN: spaceWeather["223"]["PRE"]["mn"],
+          preMX: spaceWeather["223"]["PRE"]["mx"],
         } );
       } );
   }
   render() {
-    return ( <section>
-      <p>{this.state.utc}</p>
-      <h1>Temp</h1>
-      <p>Temp Avg: {this.state.atAV}° F</p>
-      {/* <p>{this.state.atCT}</p> */}
-      <p>Temp Min: {this.state.atMN}° F</p>
-      <p>Temp Max: {this.state.atMX}° F</p>
-      <h1>Wind Speed</h1>
-      <p>Avg Wind Speed: {this.state.hwsAV}mph</p>
-      {/* <p>{this.state.hwsCT}</p> */}
-      <p>Min Wind Speed: {this.state.hwsMN}mph</p>
-      <p>Max Wind Speed: {this.state.hwsMX}mph</p>
-      <h1>Barometric Pressure</h1>
-      <p>Avg Pressure: {this.state.preAV}Pa</p>
-      {/* <p>{this.state.preCT}</p> */}
-      <p>Min Pressure: {this.state.preMN}Pa</p>
-      <p>Max Pressure: {this.state.preMX}Pa</p>
+    return (
+    <section style={styles.weatherCenter}>
+      <article style={styles.weatherCards}>
+        <h1 style={styles.weatherCardHeader}>Temp</h1>
+        <p style={styles.weatherCardText}>Temp Avg: {this.state.atAV}° F</p>
+        <p style={styles.weatherCardText}>Temp Max: {this.state.atMX}° F</p>
+        <p style={styles.weatherCardText}>Temp Min: {this.state.atMN}° F</p>
+
+        <h1 style={styles.weatherCardHeader}>Wind Speed</h1>
+        <p style={styles.weatherCardText}>Avg Wind Direction: {this.state.hwsWD}</p>
+        <p style={styles.weatherCardText}>Avg Wind Speed: {this.state.hwsAV}mph</p>
+        <p style={styles.weatherCardText}>Max Wind Speed: {this.state.hwsMX}mph</p>
+        <p style={styles.weatherCardText}>Min Wind Speed: {this.state.hwsMN}mph</p>
+
+        <h1 style={styles.weatherCardHeader}>Barometric Pressure</h1>
+        <p style={styles.weatherCardText}>Avg Pressure: {this.state.preAV}Pa</p>
+        <p style={styles.weatherCardText}>Max Pressure: {this.state.preMX}Pa</p>
+        <p style={styles.weatherCardText}>Min Pressure: {this.state.preMN}Pa</p>
+      </article>
     </section>
     );
   }
 }
 
 export default Pg3;
+
+const styles = {
+  weatherCenter: {
+    backgroundColor: 'white',
+    textAlign: 'left',
+    padding: '2%'
+  },
+  weatherCards: {
+    backgroundColor: 'grey',
+    width: 'fit-content',
+    padding: '1%'
+  },
+  weatherCardHeader: {
+    margin: '2% 0 0 0'
+  },
+  weatherCardText: {
+    margin: '0px'
+  }
+}

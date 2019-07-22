@@ -23,13 +23,69 @@ class Pg2 extends Component {
   }
   render() {
     return (
-      <section>
-        <p>{this.state.cameraGallery.earth_date}</p>
-        <p>{this.state.cameraInfo.full_name}</p>
-        <img src={this.state.cameraGallery.img_src} alt="img" />
-      </section>
+      <div>
+      {/* Form + About */}
+        <section style={styles.galleryControls}>
+          <form style={styles.galleryControlsForm}>
+            <fieldset style={styles.galleryControlsFieldsets}>
+              <label>Camera -</label>
+              <select id="cameraInput">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </fieldset>
+            <fieldset style={styles.galleryControlsFieldsets}>
+              <button type="submit">Search</button>
+            </fieldset>
+          </form>
+          <div style={styles.galleryControlsAbout}>
+            <p>In this image gallery you can find a collection of saved camera shots from the rovers on Mars. More information to be added later</p>
+          </div>
+        </section>
+
+      {/* Gallery */}
+        <section style={styles.galleryContainer}>
+          <p>Earth Date (YYYY-MM-DD): {this.state.cameraGallery.earth_date}</p>
+          <p>Camera: {this.state.cameraInfo.full_name}</p>
+          <img src={this.state.cameraGallery.img_src} alt="img" style={styles.imageStyle}/>
+        </section>
+      </div>
     );
   }
 }
 
 export default Pg2;
+
+const styles = {
+  galleryControls: {
+    padding: '2%',
+    marginBottom: '2%',
+    backgroundColor: 'white'
+  },
+  galleryControlsForm: {
+    display: 'flex',
+    flexFlow: 'row',
+    width: '50%',
+    padding: '1%',
+    marginBottom: '2%',
+    border: '1px black solid'
+  },
+  galleryControlsFieldsets: {
+    display: 'flex',
+    flexFlow: 'column',
+    padding: '1%',
+    marginBottom: '2%',
+    border: '1px black solid'
+  },
+  galleryContainer: {
+    marginTop: '2%',
+    padding: '2%',
+    backgroundColor: 'white'
+  },
+  imageStyle: {
+    width: '100%',
+    height: 'auto'
+  }
+}
