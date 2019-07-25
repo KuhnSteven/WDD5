@@ -4,36 +4,57 @@ import '../App.css';
 class Pg2 extends Component {
   state = {
     cameraGallery: [],
-    cameraInfo: []
+    cameraInfo: [],
+    cameraInput: []
   }
   componentDidMount(){
         //Camera Gallery
         const apiKey = `E6Ia87NnQyeFUYuqZqKTf9DzLO3WYlGcbmppB1uy`
-        const cameras = ["fhaz", "rhaz", "mast", "chemcam", "mahli", "mardi", "navcam", "pancam", "minites"];
-        const cameraGalleryAPI = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=${cameras[0]}&api_key=${apiKey}`;
+        // const cameras = ["fhaz", "rhaz", "mast", "chemcam", "mahli", "mardi", "navcam", "pancam", "minites"];
+        const cameraGalleryAPI = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=${this.state.cameraInput}&api_key=${apiKey}`;
         fetch(cameraGalleryAPI)
           .then(res => res.json())
           .then(cameraGallery => {
-            console.log(cameraGallery.photos);
+            console.log(cameraGallery);
             this.setState({
-              cameraGallery: cameraGallery.photos[0],
-              cameraInfo: cameraGallery.photos[0].camera
+              cameraGallery: cameraGallery.photos,
+              cameraInfo: cameraGallery.photos.camera
             });
           });
   }
+
+changeCamera = e =>{
+  e.preventDefault();
+  this.setState({cameraInput: e.target.value})
+  console.log(this.state.cameraInput)
+}
+
   render() {
+    const onSubmit = e =>{
+      e.preventDefault();
+      console.log(this.state.cameraInput)
+    }
     return (
       <div>
       {/* Form + About */}
         <section style={styles.galleryControls}>
-          <form style={styles.galleryControlsForm}>
+          <form onSubmit={e =>onSubmit(e)} style={styles.galleryControlsForm}>
             <fieldset style={styles.galleryControlsFieldsets}>
+              {/* <label>Sol -</label>
+              <input type="text" placeholder="Sol date"></input> */}
+
               <label>Camera -</label>
-              <select id="cameraInput">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+              <select name="cameraInput" onChange={this.changeCamera} id="cameraInput">
+              <option>Select Camera Input</option>
+                <option value="fhaz">Front Hazard</option>
+                <option value="rhaz">Rear Hazard</option>
+                <option value="mast">Mast</option>
+                <option value="chemchem">ChemChem</option>
+                <option value="mahli">Mahli</option>
+                <option value="mardi">Mardi</option>
+                <option value="navcam">NavCam</option>
+                <option value="pancam">PanCam</option>
+                <option value="minites">Minites</option>
               </select>
             </fieldset>
             <fieldset style={styles.galleryControlsFieldsets}>
@@ -46,11 +67,11 @@ class Pg2 extends Component {
         </section>
 
       {/* Gallery */}
-        <section style={styles.galleryContainer}>
+        {/* <section style={styles.galleryContainer}>
           <p>Earth Date (YYYY-MM-DD): {this.state.cameraGallery.earth_date}</p>
           <p>Camera: {this.state.cameraInfo.full_name}</p>
           <img src={this.state.cameraGallery.img_src} alt="img" style={styles.imageStyle}/>
-        </section>
+        </section> */}
       </div>
     );
   }

@@ -29,12 +29,21 @@ class Pg4 extends Component {
 
   render() {
       return (
-        <section >
-        <img src="https://api.nasa.gov/mars-wmts/catalog/Mars_MO_THEMIS-IR-Day_mosaic_global_100m_v12_clon0_ly/1.0.0/default/default028mm/0/0/0.jpg" alt="" />
-        <img src="https://api.nasa.gov/mars-wmts/catalog/Mars_MO_THEMIS-IR-Day_mosaic_global_100m_v12_clon0_ly/1.0.0/default/default028mm/0/0/1.jpg" alt="" />
+        <section style={styles.mapContainer}>
+          <h1>Map</h1>
+          <img src="https://api.nasa.gov/mars-wmts/catalog/Mars_MO_THEMIS-IR-Day_mosaic_global_100m_v12_clon0_ly/1.0.0/default/default028mm/0/0/0.jpg" alt="" />
+          <img src="https://api.nasa.gov/mars-wmts/catalog/Mars_MO_THEMIS-IR-Day_mosaic_global_100m_v12_clon0_ly/1.0.0/default/default028mm/0/0/1.jpg" alt="" />
         </section>
     );
   }
 }
 
 export default Pg4;
+
+const styles = {
+  mapContainer: {
+    backgroundColor: 'white',
+    padding: '2%',
+    textAlign: 'center'
+  }
+}
