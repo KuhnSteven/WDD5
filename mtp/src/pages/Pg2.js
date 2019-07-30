@@ -5,7 +5,7 @@ class Pg2 extends Component {
   state = {
     cameraGallery: [],
     cameraInfo: [],
-    cameraInput: []
+    cameraInput: "fhaz"
   }
   componentDidMount(){
         //Camera Gallery
@@ -62,7 +62,25 @@ changeCamera = e =>{
             </fieldset>
           </form>
           <div style={styles.galleryControlsAbout}>
-            <p>In this image gallery you can find a collection of saved camera shots from the rovers on Mars. More information to be added later</p>
+          <h1>Camera Gallery</h1>
+            <p>Thanks to the free publishing rights for all of NASA’s rover
+            photography and integration within their API framework, Mars
+            Travel Planner is able to provide users with streamlined access
+            to images of Mars through the eyes of the intrepid Curiosity,
+            Opportunity, or Spirit.</p>
+
+            <p>Each rover has front & rear hazard avoidance cameras and
+            navigation cameras. Spirit and Opportunity both have the
+            distinction of the only panoramic cameras and thermal emission
+            spectrometers. Curiosity instead has access to: it’s central
+            mast camera, the chemistry and camera complex, the Mars Hand
+            Lens Imager, and the Mars Descent Imager.</p>
+
+            <p>To search for images, simply indicate what sol (Mars day)
+            you want to check, which cameras you’d like to see images from,
+            and hit the search button! If you want to know more about the
+            picture, simply click for a link to the source, so long as one
+            is provided.</p>
           </div>
         </section>
 

@@ -15,8 +15,9 @@ class Footer extends Component {
         </section>
         <section style={styles.splitStyle2}>
           <h1 style={styles.headerStyle}>Navigation</h1>
-          <NavLink to="/Pg1"><FaHome /></NavLink>
-          <NavLink to="/Pg2"><FaHandPeace /></NavLink> 
+          <NavLink to="/Home"><FaHome /> Home</NavLink>
+          <NavLink to="/Pg2"><FaHandPeace /> Gallery</NavLink> 
+          <NavLink to="/Planner"><FaHome /> Planner</NavLink>
         </section>
         <section style={styles.splitStyle}>
           <h1 style={styles.headerStyle}>Project Details:</h1>
@@ -33,7 +34,6 @@ const styles = {
   footerStyle: {
       display: 'flex',
       flexDirection: 'row',
-      backgroundColor: 'cadetBlue',
       padding: '1%'
   },
   splitStyle: {
