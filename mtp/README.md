@@ -1,9 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+## Table of Contents
+
+About project
+  Mars Travel Planner (MTP) was developed as tribute both to the 50th anniversary for the Apollo Moon Missions, but also my own love for 
+  space exploration and technology. The homepage includes a carousel that displays the past 5 days worth of Astronomy of the Day images,
+  and a weather center with information supplied by the Insight lander. Unfortunately at this time the gallery, mars trek and planner are all mostly broken. Gallery has hard coded queries and gallery filling but it's pretty unstable. Mars Trek has grid-built images with a collapse menu, but the actual trek feature of the API is not included. Lastly the trip planner has only the beginning stages of localStorage to save to a local machine, and the profile view page shows my own hardcoded values.
+
+Pictures, video link
+To be added after recording
+
+Development cycle
+In week 1 I researched project topics, design theory, APIs and the merit behind my ideas. In week 2 I focused on API functionality, getting information to come back and styling various page attributes. In week 3 I focused on a ton of design and layout work, moving the weather page into the home page and removing the about page, which would later be removed from home and the project entirely. In week 4 I completely refined every aspect of the project, with a functional bootstrap carousel on the homepage, a decent looking weather center with previous days weather, placeholder data and functionality everywhere else.
+
+Download & run instructions
+Download MTP file structure to local machine
+Open desired code editor/shell, access mtp folder via terminal (cd foldername/mtp)
+npm install, allow modules to install
+npm start
+
+Link to live site
+[here](https://kuhnsteven.github.io/WDD5/#/).
+
+
 
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-## Table of Contents
+## React/npm Table of Contents
 
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)

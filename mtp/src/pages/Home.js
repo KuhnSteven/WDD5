@@ -2,41 +2,18 @@ import React, {
   Component
 } from 'react';
 
-// reactstrap
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
-} from 'reactstrap';
-
 // js framework
 import moment from 'moment';
 
 // images & style
-import insightArt from '../images/insightArt.jpg';
-import marsPhoto from '../images/mars.jpg';
-import rocketPhoto from '../images/spaceXFH.jpg';
-import '../App.css';
+import {FaCompass} from 'react-icons/fa'
+import {FaThermometerThreeQuarters} from 'react-icons/fa'
+// import {FaThermometerQuarter} from 'react-icons/fa'
+import {FaWind} from 'react-icons/fa'
+import {FaWeightHanging} from 'react-icons/fa'
 
-const items = [
-  {
-    src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa1d%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa1d%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.921875%22%20y%3D%22218.3%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
-    altText: 'Slide 1',
-    caption: 'Slide 1'
-  },
-  {
-    src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa20%20text%20%7B%20fill%3A%23444%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa20%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23666%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22247.3203125%22%20y%3D%22218.3%22%3ESecond%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
-    altText: 'Slide 2',
-    caption: 'Slide 2'
-  },
-  {
-    src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa21%20text%20%7B%20fill%3A%23333%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa21%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23555%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22277%22%20y%3D%22218.3%22%3EThird%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
-    altText: 'Slide 3',
-    caption: 'Slide 3'
-  }
-];
+import insightArt from '../images/insightArt.jpg';
+import '../App.css';
 
 class Home extends Component {
   state = {
@@ -55,15 +32,6 @@ class Home extends Component {
     solArray6: [],
 
   };
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { activeIndex: 0 };
-  //   this.next = this.next.bind(this);
-  //   this.previous = this.previous.bind(this);
-  //   this.goToIndex = this.goToIndex.bind(this);
-  //   this.onExiting = this.onExiting.bind(this);
-  //   this.onExited = this.onExited.bind(this);
-  // }
 
   componentDidMount() {
     // Astronomy Photo of the day
@@ -86,7 +54,7 @@ class Home extends Component {
     fetch(picofDayAPI)
       .then(res => res.json())
       .then(picofDay => {
-        console.log("APOD " + picofDay);
+        // console.log(picofDay)
         this.setState({
           picofDay1: picofDay[0],
           picofDay2: picofDay[1],
@@ -129,133 +97,106 @@ class Home extends Component {
               solArray.push(solObject);
             }
             // console.log("solArray",solArray);
-    
             this.setState( {
               solArray: solArray[0],
               solArray1: solArray[1],
+              solArray2: solArray[2],
+              solArray3: solArray[3],
             } );
           } );
   }
 
 
-  onExiting() {
-    this.animating = true;
-  }
-
-  onExited() {
-    this.animating = false;
-  }
-
-  next() {
-    if (this.animating) return;
-    const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  previous() {
-    if (this.animating) return;
-    const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  goToIndex(newIndex) {
-    if (this.animating) return;
-    this.setState({ activeIndex: newIndex });
-  }
-
   render() {
-    // Carousel Content Container & Media Type Logic
-    // const { activeIndex } = this.state;
-
-    // const slides = items.map((item) => {
-    //   return (
-    //     <CarouselItem
-    //       onExiting={this.onExiting}
-    //       onExited={this.onExited}
-    //       key={item.src}
-    //     >
-    //       <img src={item.src} alt={item.altText} />
-    //       <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-    //     </CarouselItem>
-    //   );
-    // });
 
     return(
       <div>
         <section style={styles.carouselContainer}>
-          {/* <Carousel
-          activeIndex={activeIndex}
-          next={this.next}
-          previous={this.previous}
-          >
-            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-            {slides}
-            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-            <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-          </Carousel> */}
-          <p>APOD 5 days ago date: {this.state.picofDay1.date} title: {this.state.picofDay1.title}</p>
-          <p>4 days ago date: {this.state.picofDay2.date} title: {this.state.picofDay2.title}</p>
-          <p>3 days ago date: {this.state.picofDay3.date} title: {this.state.picofDay3.title}</p>
-          <p>2 days ago date: {this.state.picofDay4.date} title: {this.state.picofDay4.title}</p>
-          <p>today date: {this.state.picofDay5.date} title: {this.state.picofDay5.title}</p>
-          
-          <a href={this.state.picofDay5.hdurl}>
-            <img style={styles.carouselImage} src={this.state.picofDay5.url} alt={this.state.picofDay5.title} />
-          </a>
-        </section>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            </ol>
 
-          {/* Short about section */}
-        <section style={styles.aboutContainer}>
-          <div style={styles.aboutDiv}>
-            <h1>About Mars Travel Planner</h1>
-            <p>Mars Travel Planner (MTP) was developed with the intent
-            of making an application with little to no competitors,
-            based in fanciful thought but built with factual data.</p>
-            
-            <p>MTP uses public data provided by NASA to report on Mars
-            weather, photography from the Mars rovers, satellite imaging
-            and more. While all of this information can be entertaining
-            for hobbyists and useful for those getting ready to live
-            amongst the rusty red hills, our travel planner is designed
-            with the user in mind.</p>
+            <div class="carousel-inner" style={styles.carouselBackground}>
+              <div class="carousel-item active" style={styles.carouselImageCont}>
+                <a href={this.state.picofDay5.hdurl}>
+                  <img class="d-block mx-auto h-100 w-auto" src={this.state.picofDay5.url} alt="First slide" />
+                </a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{this.state.picofDay5.copyright} {this.state.picofDay5.date}</h5>
+                  <h6>{this.state.picofDay5.title}</h6>
+                </div>
+              </div>
 
-            <p>Double check your packed belongings, make sure someone
-            is booked to watch the house, and set a launch reminder via
-            our calendar. It’s a brave new world out there in the deep
-            dark bowels of space, make sure you’re not the cosmonaut who
-            left home without their night light!</p>
-          </div>
-          <div style={styles.aboutImgDiv}>
-            <img style={styles.aboutImg} src={rocketPhoto} alt="Space-X Falcon Heavy during lift off."></img>
+              <div class="carousel-item" style={styles.carouselImageCont}>
+                <a href={this.state.picofDay4.hdurl}>
+                  <img class="d-block m-auto h-100 w-auto" src={this.state.picofDay4.url} alt="Second slide" />
+                </a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{this.state.picofDay4.copyright} {this.state.picofDay4.date}</h5>
+                  <h6>{this.state.picofDay4.title}</h6>
+                </div>
+              </div>
+
+              <div class="carousel-item" style={styles.carouselImageCont}>
+                <a href={this.state.picofDay3.hdurl}>
+                  <img class="d-block m-auto h-100 w-auto" src={this.state.picofDay3.url} alt="Third slide" />
+                </a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{this.state.picofDay3.copyright} {this.state.picofDay3.date}</h5>
+                  <h6>{this.state.picofDay3.title}</h6>
+                </div>
+              </div>
+
+              <div class="carousel-item" style={styles.carouselImageCont}>
+                <a href={this.state.picofDay2.hdurl}>
+                  <img class="d-block mx-auto h-100 w-auto" src={this.state.picofDay2.url} alt="First slide" />
+                </a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{this.state.picofDay2.copyright} {this.state.picofDay2.date}</h5>
+                  <h6>{this.state.picofDay2.title}</h6>
+                </div>
+              </div>
+
+              <div class="carousel-item" style={styles.carouselImageCont}>
+                <a href={this.state.picofDay1.hdurl}>
+                  <img class="d-block mx-auto h-100 w-auto" src={this.state.picofDay1.url} alt="First slide" />
+                </a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{this.state.picofDay1.copyright} {this.state.picofDay1.date}</h5>
+                  <h6>{this.state.picofDay1.title}</h6>
+                </div>
+              </div>
+              
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
         </section>
 
           {/* Weather section */}
-          <section style={styles.aboutContainer}>
-            <div style={styles.aboutImgDiv}>
-              <img style={styles.aboutImg} src={marsPhoto} alt="Mars art"></img>
-            </div>
-            <div style={styles.aboutDiv}>
-              <h1>Mars Weather Center</h1>
-              <p>“Sol” is the term used to refer to a Martian day. A Mars
-              sol lasts 24 hours, 39 minutes, and 35.244 seconds. The
-              weather on Mars is extreme, with temperatures as frigid as
-              -242.4 degrees Fahrenheit and as warm as 71.6 degrees
-              Fahrenheit. The pressure on Mars is about 1% of Earth’s,
-              with the atmosphere being primarily composed of Carbon
-              Dioxide.</p>
-            </div>
-          </section>
           <section style={styles.weatherCenter}>
             <article style={styles.todaysWeather}>
-            <div>
               <img style={styles.insightBackground} src={insightArt} alt="Artist concept of the Insight lander."></img>
-            </div>
-              <h1 style={styles.weatherCardTitle}>TODAY</h1>
-              <h1 style={styles.weatherCardTitle}>{moment(Date()).format("ddd, MMM/DD/YYYY")} - Sol {this.state.solArray.solNumber}</h1>
+              <h1 style={styles.weatherCardTitle}>Mars Weather Center</h1>
+              
+              <h3 style={styles.weatherCardTitle}>TODAY</h3>
+              <h3 style={styles.weatherCardTitle}>{moment(Date()).format("ddd, MMM/DD/YYYY")} - Sol {this.state.solArray.solNumber}</h3>
             
+            <div style={styles.todayWeatherCards}>
               <div style={styles.weatherContainer}>
-                <h1 style={styles.weatherCardHeader}>Temperature</h1>
+                <h2 style={styles.weatherCardHeader}>Temperature <FaThermometerThreeQuarters /></h2>
                 <ul>
                   <li>
                     <p style={styles.todayWeatherP}>Max: {this.state.solArray.atMax}° F</p>
@@ -268,10 +209,10 @@ class Home extends Component {
                   </li>
                 </ul>
 
-                <h1 style={styles.weatherCardHeader}>Wind</h1>
+                <h2 style={styles.weatherCardHeader}>Wind <FaWind /></h2>
                 <ul>
                   <li>
-                    <p style={styles.todayWeatherP}>Avg Wind Direction: {this.state.solArray.windDir}</p>
+                    <p style={styles.todayWeatherP}>Avg Wind Direction: {this.state.solArray.windDir} <FaCompass /></p>
                   </li>
                   <li>
                     <p style={styles.todayWeatherP}>Max: {this.state.solArray.hwsMax}mph</p>
@@ -284,7 +225,7 @@ class Home extends Component {
                   </li>
                 </ul>
 
-                <h1 style={styles.weatherCardHeader}>Pressure</h1>
+                <h2 style={styles.weatherCardHeader}>Pressure <FaWeightHanging /></h2>
                 <ul>
                   <li>
                     <p style={styles.todayWeatherP}>Max: {this.state.solArray.preMax}Pa</p>
@@ -297,30 +238,78 @@ class Home extends Component {
                   </li>
                 </ul>
               </div>
-
-            <a href="https://mars.nasa.gov/resources/7613/artists-concept-of-insight-lander-on-mars/" style={styles.InsightLink}>Artist Credit & Story Article</a>
+              <div style={styles.weatherInfoContainer}>
+                <p>“Sol” is the term used to refer to a Martian day. A Mars
+                sol lasts 24 hours, 39 minutes, and 35.244 seconds.</p>
+                <p>The weather on Mars is extreme, with temperatures as frigid as
+                -242.4 degrees Fahrenheit and as warm as 71.6 degrees
+                Fahrenheit.</p>
+                <p>The pressure on Mars is about 1% of Earth’s,
+                with the atmosphere being primarily composed of Carbon
+                Dioxide.</p>
+                <a href="https://mars.nasa.gov/resources/7613/artists-concept-of-insight-lander-on-mars/" style={styles.InsightLink}>Artist Credit & Story Article</a>
+              </div>
+            </div>
             </article>
 
 
             {/* div container with days of weather */}
             <div style={styles.weatherReport}>
               <article style={styles.weatherCards}>
-                <h1 style={styles.weatherCardTitle}>YESTERDAY</h1>
-                
+                <h4 style={styles.weatherCardTitle}>YESTERDAY</h4>
+                <h5 style={styles.weatherCardHeader}>Temperature</h5>
+                    <p style={styles.weatherP}>Max: {this.state.solArray1.atMax}° F</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray1.atAvg}° F</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray1.atMin}° F</p>
+
+                <h5 style={styles.weatherCardHeader}>Wind</h5>
+                    <p style={styles.weatherP}>Avg Direction: {this.state.solArray1.windDir}</p>
+                    <p style={styles.weatherP}>Max: {this.state.solArray1.hwsMax}mph</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray1.hwsAvg}mph</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray1.hwsMin}mph</p>
+
+                <h5 style={styles.weatherCardHeader}>Pressure</h5>
+                    <p style={styles.weatherP}>Max: {this.state.solArray1.preMax}Pa</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray1.preAvg}Pa</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray1.preMin}Pa</p>
               </article>
 
               <article style={styles.weatherCards}>
-                <h1 style={styles.weatherCardTitle}>2 DAYS AGO</h1>
+                <h4 style={styles.weatherCardTitle}>2 DAYS AGO</h4>
+                <h5 style={styles.weatherCardHeader}>Temperature</h5>
+                    <p style={styles.weatherP}>Max: {this.state.solArray2.atMax}° F</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray2.atAvg}° F</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray2.atMin}° F</p>
+
+                <h5 style={styles.weatherCardHeader}>Wind</h5>
+                    <p style={styles.weatherP}>Avg Direction: {this.state.solArray2.windDir}</p>
+                    <p style={styles.weatherP}>Max: {this.state.solArray2.hwsMax}mph</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray2.hwsAvg}mph</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray2.hwsMin}mph</p>
+
+                <h5 style={styles.weatherCardHeader}>Pressure</h5>
+                    <p style={styles.weatherP}>Max: {this.state.solArray2.preMax}Pa</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray2.preAvg}Pa</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray2.preMin}Pa</p>
               </article>
 
               <article style={styles.weatherCards}>
-                <h1 style={styles.weatherCardTitle}>3 DAYS AGO</h1>
-                <h1 style={styles.weatherCardTitle}>Sol ?</h1>
-                <h1 style={styles.weatherCardHeader}>Temp</h1>
+                <h4 style={styles.weatherCardTitle}>3 DAYS AGO</h4>
+                <h5 style={styles.weatherCardHeader}>Temperature</h5>
+                    <p style={styles.weatherP}>Max: {this.state.solArray3.atMax}° F</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray3.atAvg}° F</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray3.atMin}° F</p>
 
-                <h1 style={styles.weatherCardHeader}>Wind Speed</h1>
+                <h5 style={styles.weatherCardHeader}>Wind</h5>
+                    <p style={styles.weatherP}>Avg Direction: {this.state.solArray3.windDir}</p>
+                    <p style={styles.weatherP}>Max: {this.state.solArray3.hwsMax}mph</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray3.hwsAvg}mph</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray3.hwsMin}mph</p>
 
-                <h1 style={styles.weatherCardHeader}>Barometric Pressure</h1>
+                <h5 style={styles.weatherCardHeader}>Pressure</h5>
+                    <p style={styles.weatherP}>Max: {this.state.solArray3.preMax}Pa</p>
+                    <p style={styles.weatherP}>Avg: {this.state.solArray3.preAvg}Pa</p>
+                    <p style={styles.weatherP}>Min: {this.state.solArray3.preMin}Pa</p>
               </article>
             </div>
           </section>
@@ -363,47 +352,19 @@ export default Home;
 
 const styles = {
   carouselContainer: {
-    backgroundColor: 'white',
-    padding: '5%'
+    padding: '1% 0 5%'
   },
-  carouselImage: {
-    width: '100%'
+  carouselBackground: {
+    backgroundColor: 'black'
   },
-  aboutContainer: {
-    display: 'flex',
-  },
-  aboutDiv: {
-    backgroundColor: 'pink',
-    display: 'flex',
-    flexFlow: 'column',
-    flexGrow: '3',
-    margin: '1%',
-    padding: '2%',
-    maxWidth: '60%',
-  },
-  aboutImgDiv: {
-    backgroundColor: 'pink',
-    display: 'flex',
-    flexGrow: '1',
-    margin: '1%',
-    padding: '2%',
-    maxWidth: '40%',
-    position: 'relative',
+  carouselImageCont: {
+    height: '40rem',
     overflow: 'hidden'
-  },
-  aboutImg: {
-    width: '100%',
-    position: 'relative',
-    margin: 'auto 0%',
-    padding: '5% 0%',
-    borderTop: '5px solid white',
-    borderBottom: '5px solid white'
   },
   weatherCenter: {
     display: 'flex',
     flexFlow: 'column',
     justifyContent: 'space-evenly',
-    // backgroundColor: 'white',
     textAlign: 'left'
   },
   insightBackground: {
@@ -421,6 +382,10 @@ const styles = {
     position: 'relative',
     overflow: 'hidden'
   },
+  todayWeatherCards: {
+    display: 'flex',
+    alignItems: 'flex-end'
+  },
   weatherContainer: {
     padding: '1% 4%',
     margin: '3%',
@@ -429,6 +394,14 @@ const styles = {
     zIndex: '2',
     float: 'left',
   },
+  weatherInfoContainer: {
+    padding: '1% 4%',
+    margin: '3%',
+    backgroundColor: 'rgba(228,228,228,.58)',
+    position:'relative',
+    zIndex: '2',
+    float: 'right',
+  },
   insightLink: {
     position:'relative',
     zIndex: '2'
@@ -436,6 +409,9 @@ const styles = {
   todayWeatherP: {
     position:'relative',
     zIndex: '2'
+  },
+  weatherP: {
+    margin: '0'
   },
   weatherReport: {
     display: 'flex',

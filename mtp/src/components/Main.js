@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
 
 import Home from '../pages/Home';
-import Pg2 from '../pages/Pg2';
-import Pg3 from '../pages/Pg3';
-import Pg4 from '../pages/Pg4';
+import Gallery from '../pages/Gallery';
+import MyPlan from '../pages/MyPlan';
+import Trek from '../pages/Trek';
 import Planner from '../pages/Planner';
 
 class Main extends Component {
@@ -13,9 +13,9 @@ class Main extends Component {
       <main style={styles.mainStyle}>
         <Route exact path='/' component={Home} />
         <Route exact path='/Home' component={Home} />
-        <Route exact path='/Pg2' component={Pg2} />
-        <Route exact path='/Pg3' component={Pg3} />
-        <Route exact path='/Pg4' component={Pg4} />
+        <Route exact path='/Gallery' component={Gallery} />
+        <Route exact path='/MyPlan' component={MyPlan} />
+        <Route exact path='/Trek' component={Trek} />
         <Route exact path='/Planner' component={Planner} />
       </main>
     );

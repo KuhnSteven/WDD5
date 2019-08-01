@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {FaHome} from 'react-icons/fa'
-import {FaHandPeace} from 'react-icons/fa'
-// import {FaGithubAlt} from 'react-icons/fa'
+import {FaMapMarkedAlt} from 'react-icons/fa'
+import {FaSpaceShuttle} from 'react-icons/fa'
+import {FaCompass} from 'react-icons/fa'
 
 class Footer extends Component {
   render() {
     return (
       <footer style={styles.footerStyle}>
         <section style={styles.splitStyle}>
-          <h1 style={styles.headerStyle}>Project Development:</h1>
+          <h5 style={styles.headerStyle}>Project Development</h5>
           <p>Developer - Steve Kuhn</p>
-          <p>To commemorate the 50th Anniversary of the Apollo Moon Landing, I wanted to create an application that focused on space and looks to the future.</p>
+          <p>To commemorate the 50th Anniversary of the Apollo Moon Landing,
+          I wanted to create an application that focused on space and looks
+          to the future.</p>
         </section>
         <section style={styles.splitStyle2}>
-          <h1 style={styles.headerStyle}>Navigation</h1>
-          <NavLink to="/Home"><FaHome /> Home</NavLink>
-          <NavLink to="/Pg2"><FaHandPeace /> Gallery</NavLink> 
-          <NavLink to="/Planner"><FaHome /> Planner</NavLink>
+          <h5 style={styles.headerStyle}>Navigation</h5>
+          <Link style={styles.navStyle} to="/Home"><FaHome /> Home</Link>
+          <Link style={styles.navStyle} to="/Gallery"><FaCompass /> Gallery</Link> 
+          <Link style={styles.navStyle} to="/Trek"><FaMapMarkedAlt /> Mars Trek</Link>
+          <Link style={styles.navStyle} to="/Planner"><FaSpaceShuttle /> Planner</Link>
         </section>
         <section style={styles.splitStyle}>
-          <h1 style={styles.headerStyle}>Project Details:</h1>
-          <p>This project was composed for Project & Portfolio 5 at Full Sail University, instructed by Sean Bernath. The scope of the project was an API driven site with any functionality of our choice. MTP Includes multiple APIs, queried in a multitude of ways.</p>
+          <h5 style={styles.headerStyle}>Project Details</h5>
+          <p>MTP uses public data provided by NASA to report on Mars
+            weather, photography from the Mars rovers, satellite imaging
+            and more.</p>
         </section>
       </footer>
     );
@@ -33,7 +39,6 @@ export default Footer;
 const styles = {
   footerStyle: {
       display: 'flex',
-      flexDirection: 'row',
       padding: '1%'
   },
   splitStyle: {
@@ -49,7 +54,11 @@ const styles = {
       flexDirection: 'column',
       flexGrow: '2',
       backgroundColor: 'white',
-      padding: '1%'
+      padding: '1%',
+      margin: '0 7%'
+  },
+  navStyle: {
+    margin: '2% auto'
   },
   headerStyle: {
     textAlign: 'center'

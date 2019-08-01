@@ -20,7 +20,8 @@ export default Header;
 
 const styles = {
   headerStyle:{
-    padding: '0% 0% 2%'
+    display: 'flex',
+    justifyContent: 'space-between'
   },
   logoStyle: {
     width: '150px',
@@ -28,9 +29,9 @@ const styles = {
   },
   titleStyle: {
     display: 'flex',
-    padding: '1% 1% 2%'
+    padding: '.5% .5% 2%'
   },
   titleHeaderStyle: {
-    margin: 'auto 2%'
+    margin: 'auto'
   }
 }
